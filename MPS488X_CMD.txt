@@ -1,0 +1,71 @@
+1>Plug in network cable and Power ON  
+2>
+FIV?
+
+3>
+TEST MPSTryToGuess42
+
+4>
+OTP M
+
+5>
+OTP S
+
+6> SCAN BOX BARCODE
+SER (SCAN BOX)
+
+7> CHECK Serial Number
+SER
+
+8>Change new MAC
+MAC (SCAN BARCODE)
+
+9> CHECK MAC
+MAC
+
+10>****
+OTP O
+
+11>
+RESET_FACTORY
+
+***CHECK
+
+12> Current Normal Mode Update
+
+13> Current Recovery Mode Update
+
+
+Succesfully connected to  Device - MPS488
+
+##########################
+Running the Example:
+
+FIV?
+FIV=1.0.0.1285
+
+TEST MPSTryToGuess42
+Test Mode enabled
+
+OTP M
+OTP MAC=00:1C:AB:01:14:FF
+
+OTP S
+OTP SER=23275361
+
+SER 23275361
+SER=23275361^I
+
+SER
+SER=23275361
+
+MAC 00:1C:AB:01:58:28
+MAC OK^I
+
+MAC
+MAC=00:1C:AB:01:58:28
+
+OTP O
+OTP overwrite OK
+
+RESET_FACTORY
