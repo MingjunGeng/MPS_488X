@@ -6,3 +6,9 @@ Introduce how to use commands to change mac address and serial port number
 ### --- 0x02 change MAC address and  Serial Number
 ### --- 0x03 Update Normal Mode FW
 ### --- 0x04 Update Recovery Mode FW
+
+# mac.py --- usb python ssh to Device
+
+# mac.bat --- run mac.py
+
+# MPS-488X.lnk --- link to putty 
