@@ -1,6 +1,7 @@
 import pyautogui
 import keyboard
 import sys
+import os
 
 class MPS_488X():
     def __init__(self):
