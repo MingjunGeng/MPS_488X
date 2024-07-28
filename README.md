@@ -1,41 +1,53 @@
 # mps-update
 
-# index
+## Index
 
 ```
-├── MPS-488X.lnk                    ---> link to putty.exe 
-├── MPS488X_CMD.txt                 ---> Introduce how to use commands
+├── MPS-488X.lnk                    ---> link to putty.exe
 ├── README.md
-├── mac_Normal_Mode_Update.py       ---> update Device Normal Mode Fireware
-├── mac_Normal_Mode_Update.bat      ---> run mac_Normal_Mode_Update.py
-├── mac_Recovery_Mode_Update.bat    ---> run mac_Recovery_Mode_Update.py
-├── mac_Recovery_Mode_Update.py     ---> update Device Recovery Mode_ Fireware
-├── mac_check.bat                   ---> run mac_check.bat
-├── mac_check.py                    ---> check change mac address and serial port number
-├── mac_putty.bat                   ---> run mac_putty.bat
-├── mac_putty.py                    ---> change mac address and serial port number
-└── tools
-    ├── README.md
-    ├── getCPosition.py             ---> run mac_Recovery_Mode_Update.py
-    └── getImage.py                 ---> run mac_Recovery_Mode_Update.py
+├── doc                             ---> Introduce how to use commands to change mac address and serial port number
+├── mac_main.py                     ---> link to putty.exe
+├── tools                           ---> get Image info
+└── v01                             ---> tag v01
 ```
 
-## MPS488X_CMD.txt  
-Introduce how to use commands to change mac address and serial port number
-### --- 0x01 connect MPS488X 
-### --- 0x02 change MAC address and  Serial Number
-### --- 0x03 Update Normal Mode FW
-### --- 0x04 Update Recovery Mode FW
-
+## menu 
+```
+Main Menu
+0.  Normal_Mode_Update               ---> Update Device Normal Mode Fireware
+1.  Recovery_Mode_Update             ---> Update Device Recovery Mode Fireware
+2.  Mac_Update                       ---> Change Mac Sddress and Serial Number 
+3.  Mac_Check                        ---> Change Mac Sddress and Serial Number 
+```
 ## run cmd
 ```
-1>
-mac_putty.bat
-2>
-mac_check.bat
-3>
-mac_Normal_Mode_Update.bat 
-4>
-mac_Recovery_Mode_Update.bat 
+#python3 mac_main.py 
+Main Menu
+0.  Normal_Mode_Update
+1.  Recovery_Mode_Update
+2.  Mac_Update
+3.  Mac_Check
 
+Plase enter you  choice: 0
+Main Menu
+0.  Normal_Mode_Update
+1.  Recovery_Mode_Update
+2.  Mac_Update
+3.  Mac_Check
+
+Plase enter you  choice: 1
+Main Menu
+0.  Normal_Mode_Update
+1.  Recovery_Mode_Update
+2.  Mac_Update
+3.  Mac_Check
+
+Plase enter you  choice: 2
+Main Menu
+0.  Normal_Mode_Update
+1.  Recovery_Mode_Update
+2.  Mac_Update
+3.  Mac_Check
+
+Plase enter you  choice: 3
 ```
