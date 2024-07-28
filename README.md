@@ -29,13 +29,13 @@ Introduce how to use commands to change mac address and serial port number
 
 ## run cmd
 ```
-1>
+1> change mac address and serial port number
 mac_putty.bat
-2>
+2> check mac address and serial port number 
 mac_check.bat
-3>
+3> update Device Normal Mode Fireware
 mac_Normal_Mode_Update.bat 
-4>
+4> update Device Recovery Mode_ Fireware
 mac_Recovery_Mode_Update.bat 
 
 ```
