@@ -114,7 +114,19 @@ def run_menu(menu, parent=None):
     while True:
         print_menu(menu)
 
+        #if parent:
+        #    print("99. go back to parent")
         getin = input("Plase enter you  choice: ")
+
+        #if parent and getin =='99':
+        #    return
+
+        if not getin.isnumeric() or  int(getin) >= len(menu['options']):
+            print()
+            print("Invalid choice, please try again.")
+            print()
+            continue
+            
         menu['options'][int(getin)]['command']()
 
 
