@@ -146,7 +146,7 @@ main_menu = {
         {'type': COMMAND, 'text': ' Update Device Recovery Mode Fireware', 'command': mps_488X.Recovery_Mode_Update},
         {'type': COMMAND, 'text': ' Change Mac Sddress and Serial Number', 'command': mps_488X.Mac_Update},
         {'type': COMMAND, 'text': ' Change Mac Sddress and Serial Number', 'command': mps_488X.Mac_Check},
-        #{'type': COMMAND, 'text': ' EXIT', 'command': mps_488X.test},
+        {'type': COMMAND, 'text': ' EXIT', 'command': mps_488X.test},
         ]
     }
 run_menu(main_menu)
