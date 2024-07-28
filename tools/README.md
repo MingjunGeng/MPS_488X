@@ -1,10 +1,10 @@
 # tools
 
 ```
-└── tools
-    ├── README.md
-    ├── getCPosition.py             ---> Get Center Position in screen
-    └── getImage.py                 ---> Check Get Center Position
+tools                           ---> get Image info
+├── README.md
+├── getCPosition.py             ---> Get Center Position in screen
+└── getImage.py                 ---> Check Get Center Position
 ```
 
 ### --- 0x01 getCPosition.py 
