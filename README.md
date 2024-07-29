@@ -30,7 +30,7 @@ The MPS_488X Automation Tool is designed to automate the manual processes involv
 2. Install the required packages:
 
 ```sh
-pip install pyautogui wxPython pillow keyboard
+pip install pyautogui wxPython pillow keyboard opencv-python
 ```
 
 ## Usage

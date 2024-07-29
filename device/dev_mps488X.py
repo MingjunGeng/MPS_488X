@@ -3,9 +3,38 @@ import os
 import time
 import pyautogui
 import keyboard
+from PIL import ImageGrab, Image
+import cv2
+import pyscreeze
 
+def findCenter():
+    screenScale = 1
+    target = cv2.imread('./img/login.png', cv2.IMREAD_GRAYSCALE)
+    screenshot = pyscreeze.screenshot('my_screenshot.png')
+    temp = cv2.imread('my_screenshot.png', cv2.IMREAD_GRAYSCALE)
+    theight, tweigth = target.shape[:2]
+    tempheight, tempweigth = temp.shape[:2]
+    scaleTemp = cv2.resize(temp, (int(tempweigth/screenScale), int(tempheight/screenScale)) )
+    stempheight, stempweigth = scaleTemp.shape[:2]
+    res = cv2.matchTemplate(scaleTemp, target, cv2.TM_CCOEFF_NORMED)
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res) 
+    if(max_val>=0.9):
+        top_left = max_loc
+        bottom_right = (top_left[0] + tweigth, top_left[1] + theight)
+        tagHalfW = int(tweigth/2)
+        tagHalfH = int(theight/2)
+        tagCenterX = top_left[0] + tagHalfW
+        tagCenterY = top_left[1] + tagHalfH
+    else:
+        print('no found')
+    os.remove('my_screenshot.png')
+    return tagCenterX, tagCenterY
+    
 LoginLoS = [None, None]
+AdvancedsettingsLoS = [None, None]
+Browse = [None, None]
 #print("LoginLoS[0] ", LoginLoS[0], LoginLoS[1])
+#print("AdvancedsettingsLoS[0] ", AdvancedsettingsLoS[0], AdvancedsettingsLoS[1])
 def locateOnScreen(ImgName):
     los = pyautogui.locateOnScreen(ImgName)
     if los:
@@ -42,25 +71,36 @@ class MPS_488X():
         width, height = pyautogui.size()
         
         # login
-        #LoginLoS = locateOnScreen('./img/login.png')
+        x, y = findCenter()
+        print(x, y)
         if LoginLoS[0] == None or LoginLoS[1] == None:
           LoginLoS[0], LoginLoS[1] = findCenterOnScreen('./img/login.png')
           pyautogui.moveTo(LoginLoS[0], LoginLoS[1], duration=0.25)
         else:
           pyautogui.moveTo(LoginLoS[0], LoginLoS[1], duration=0.25)
-        
+        #pyautogui.moveTo(1450, 300, duration=0.25)
         pyautogui.click()
 
         #time.sleep(2)
-        cx, cy = findCenterOnScreen('./img/Advanced-settings.png')
-        #print(cx, cy)
-        pyautogui.moveTo(cx, cy, duration=0.25)
+
+        # Advanced-settings
+        if AdvancedsettingsLoS[0] == None or AdvancedsettingsLoS[1] == None:
+          AdvancedsettingsLoS[0], AdvancedsettingsLoS[1] = findCenterOnScreen('./img/Advanced-settings.png')
+          #print("AdvancedsettingsLoS[0] ", AdvancedsettingsLoS[0], AdvancedsettingsLoS[1])
+          pyautogui.moveTo(AdvancedsettingsLoS[0], AdvancedsettingsLoS[1], duration=0.25)
+        else:
+          pyautogui.moveTo(AdvancedsettingsLoS[0], AdvancedsettingsLoS[1], duration=0.25)
+        #pyautogui.moveTo(1650, 110, duration=0.25)
         pyautogui.click()
 
-        # Browse
+        # Browse Browse.png
         time.sleep(1)
-        cx, cy = findCenterOnScreen('./img/UpdateNormalModeImage.png')
-        print(cx, cy)
+        #if Browse[0] == None or Browse[1] == None:
+        Browse[0], Browse[1] = findCenterOnScreen('./img/Browse.png')
+        print("Browse = ", Browse[0], Browse[1])
+        pyautogui.moveTo(Browse[0], Browse[1], duration=0.25)
+        #else:
+        #  pyautogui.moveTo(Browse[0], Browse[1], duration=0.25)
         #pyautogui.moveTo(cx-82, cy-49, duration=0.25)
         pyautogui.moveTo(1300, 350, duration=0.25)
         pyautogui.click()
@@ -82,23 +122,28 @@ class MPS_488X():
         pyautogui.click()
 
     def Recovery_Mode_Update(self):
-        pyautogui.size()
-        width, height = pyautogui.size()
+        #pyautogui.size()
+        #width, height = pyautogui.size()
         # login
-        if LoginLoS[0] == None or LoginLoS[1] == None:
+        #LoginLoS = locateOnScreen('./img/login.png')
+        #pyautogui.moveTo(int(LoginLoS[0])+int(LoginLoS[2])/2, int(LoginLoS[1])+int(LoginLoS[3])/2, duration=0.25)
+
+        #pyautogui.moveTo(1450, 300, duration=0.25)
+        if LoginLoS[0] == None and LoginLoS[1] == None:
           LoginLoS[0], LoginLoS[1] = findCenterOnScreen('./img/login.png')
           pyautogui.moveTo(LoginLoS[0], LoginLoS[1], duration=0.25)
           print("if")
         else:
+          print("LoginLoS[0] ", LoginLoS[0], LoginLoS[1])
           pyautogui.moveTo(LoginLoS[0], LoginLoS[1], duration=0.25)
           print("else")
         pyautogui.click()
 
-        time.sleep(1.8)
+        time.sleep(1)
         # Advanced-settings
         AdvancedsettingsLoS = locateOnScreen('./img/Advanced-settings.png')
-        pyautogui.moveTo(AdvancedsettingsLoS[0]+AdvancedsettingsLoS[2]/2, AdvancedsettingsLoS[1]+AdvancedsettingsLoS[3]/2, duration=0.25)
-        #pyautogui.moveTo(1650, 110, duration=0.25)
+        #pyautogui.moveTo(AdvancedsettingsLoS[0]+AdvancedsettingsLoS[2]/2, AdvancedsettingsLoS[1]+AdvancedsettingsLoS[3]/2, duration=0.25)
+        pyautogui.moveTo(1650, 110, duration=0.25)
         pyautogui.click()
         # Browse
         pyautogui.moveTo(1300, 550, duration=0.25)
@@ -115,7 +160,6 @@ class MPS_488X():
         # Yes
         pyautogui.moveTo(1300, 655, duration=0.25)
         pyautogui.click()
-
 
     def Mac_Update(self):
         os.startfile(r"C:\Dell\MAC\MPS-488X.lnk")
